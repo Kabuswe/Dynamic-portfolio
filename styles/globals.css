@@ -6,11 +6,55 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
 * {
   box-sizing: border-box;
+}
+
+.navbar-bg{
+  background-color: #0B0C17 ;
+}
+
+.active > div{
+  color: #EE16E5;
+}
+.nav-link > span {
+  color: #E7E7E7;
+}
+
+.nav-item > .nav-link > span:hover {
+  color: #979797;
+}
+
+.navbar-brand > span {
+  color: #EE16E5;
+  font-size: 100%;
+}
+
+.footer-bg{
+  background-color: #0B0C17;
+}
+
+.footer-text{
+  font-size: smaller;
+  color: #E7E7E7;
+  margin-top: 5%;
+}
+
+.copyright-text{
+  font-size: x-small;
+  color: #E7E7E7;
+}
+
+.footer{
+  position: absolute;
+  background-color: #0B0C17;
+  bottom: 0;
+  width: 100%;
+  height: auto; 
+  padding-top: 1rem;
+}
+
+.test{
+  flex: 1;
+  justify-content: center;
 }

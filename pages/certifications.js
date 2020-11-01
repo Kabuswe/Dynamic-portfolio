@@ -2,8 +2,8 @@ import Head from 'next/head'
 import Navbar from '../components/navbar'
 import Footer from '../components/footer'
 
-export default function Home() {
-  const title = "Home"
+export default function Certifications() {
+  const title = "Certifications"
   return (
     <>
       <Head>
