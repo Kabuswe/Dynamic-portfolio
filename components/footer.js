@@ -8,7 +8,7 @@ export default function Footer(){
         <footer className="footer">
             <div className="container">
                 <div className="row">
-                    <div className="col-sm">
+                    <div className="col-sm-4">
                         <div className="row justify-content-left">
                             <div className="col-2">
                                 <GithubLogo/>
@@ -28,7 +28,7 @@ export default function Footer(){
                        </div>
                     </div>
                    
-                    <div className="col-sm">
+                    <div className="col-sm-5">
                         <div className="row justify-content-left">
                             <div className="col-2">
                                 <NextjsLogo/>
