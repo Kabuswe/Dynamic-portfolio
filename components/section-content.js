@@ -3,30 +3,30 @@ import CircleSVG from '../public/images/svg/circle.svg'
 function BubbleLeft(props){
     return(
         <div className="bubble-left">
-           <h5 className="bubble-text">apr 2018 - jun 2018</h5>
+           <h5 className="bubble-text">{props.bubbleText}</h5>
         </div>
     )
 }
 function BubbleRight(props){
     return(
         <div className="bubble-right">
-            <h5 className="bubble-text">apr 2018 - jun 2018</h5>
+            <h5 className="bubble-text">{props.bubbleText}</h5>
         </div>
     )
 }
 function TitleLeft(props){
     return(
         <div className="title-left-container">
-            <h5 className="title-text-left-lg">Source d'Art</h5>
-            <h5 className="title-text-left-sm">Student Intern</h5>
+            <h5 className="title-text-left-lg">{props.heading}</h5>
+            <h5 className="title-text-left-sm">{props.subHeading}</h5>
         </div>
     )
 }
 function TitleRight(props){
     return(
         <div className="title-right-container">
-            <h5 className="title-text-right-lg">Source d'Art</h5>
-            <h5 className="title-text-right-sm">Student Intern</h5>
+            <h5 className="title-text-right-lg">{props.heading}</h5>
+            <h5 className="title-text-right-sm">{props.subHeading}</h5>
         </div>
     )
 }
@@ -36,15 +36,13 @@ export function SectionLeft(props){
             <div className="col-5">
                 <div className="row">
                     <div className="col">
-                        <TitleLeft/>
+                        <TitleLeft heading={props.heading} subHeading={props.subHeading}/>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col">
                         <p className="text-paragraph-left">
-                            Development of a publicity android mobile application.
-                            Development and maintenance of a quiz platform used at the Radiologie and Medical Imagery Conference.
-                            Designing E-posters used at the aforementioned conference.
+                           {props.description}
                         </p>
                     </div>
                 </div>
@@ -52,7 +50,7 @@ export function SectionLeft(props){
             <div className="col-2 sec-center-container">
                 <div className="row">
                     <div className="col">
-                        <CircleSVG/>
+                        <CircleSVG className="circle-svg"/>
                         {props.lineVisble && 
                             <hr className="vertical-line"/>
                         }
@@ -62,7 +60,7 @@ export function SectionLeft(props){
             <div className="col-5 sec-content-container">
                 <div className="row">
                     <div className="col">
-                        <BubbleLeft/>
+                        <BubbleLeft bubbleText={props.bubbleText}/>
                     </div>
                 </div>
                 
@@ -77,14 +75,14 @@ export function SectionRight(props){
             <div className="col-5 sec-right-container">
                 <div className="row">
                     <div className="col">
-                        <BubbleRight/>
+                        <BubbleRight bubbleText={props.bubbleText}/>
                     </div> 
                 </div>
             </div>
             <div className="col-2 sec-center-container">
                 <div className="row">
                     <div className="col">
-                        <CircleSVG/>
+                        <CircleSVG className="circle-svg"/>
                         {props.lineVisble && 
                             <hr className="vertical-line"/>
                         }
@@ -94,15 +92,13 @@ export function SectionRight(props){
             <div className="col-5">
                 <div className="row">
                     <div className="col">
-                        <TitleRight/>
+                        <TitleRight heading={props.heading} subHeading={props.subHeading}/>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col">
                         <p className="text-paragraph-right">
-                            Development of a publicity android mobile application.
-                            Development and maintenance of a quiz platform used at the Radiologie and Medical Imagery Conference.
-                            Designing E-posters used at the aforementioned conference.
+                            {props.description}
                         </p>
                     </div>
                 </div>
