@@ -3,9 +3,24 @@ import Navbar from '../components/navbar'
 import Footer from '../components/footer'
 import SectionHeader from '../components/section-header'
 import {SectionLeft,SectionRight} from '../components/section-content'
+import {useSelector} from 'react-redux'
+import { format } from 'date-fns'
 
 export default function Certifications() {
   const title = "Certifications"
+  const {data} = useSelector(state => state)
+  let left = true
+  
+  const formatDate = (start) =>{
+    let startDate = new Date()
+    startDate.setFullYear(start.year, start.month)
+    startDate = format(startDate,'LLL yyyy')
+
+    left = !left
+
+    return startDate
+  }
+  
   return (
     <>
       <Head>
@@ -20,35 +35,22 @@ export default function Certifications() {
           subHeader="My Certificates"/>
           <div className="section-cont">
 
-            <SectionLeft 
-            heading="Front-End Web Development with React" 
-            subHeading="Coursera" 
-            bubbleText="OCT 2020"
-            lineVisble={true}/>
-
-            <SectionRight 
-            heading="Server-side Development with NodeJS, Express and MongoDB" 
-            subHeading="Coursera" 
-            bubbleText="OCT 2020"
-            lineVisble={true}/>
-            
-            <SectionLeft 
-            heading="Service-Oriented Architecture" 
-            subHeading="Coursera" 
-            bubbleText="OCT 2020"
-            lineVisble={true}/>
-
-            <SectionRight 
-            heading="Design Patterns" 
-            subHeading="Coursera" 
-            bubbleText="SEP 2020"
-            lineVisble={true}/>
-
-            <SectionLeft 
-            heading="Software Architecture" 
-            subHeading="Coursera" 
-            bubbleText="SEP 2020"
-            lineVisble={false}/>
+            {
+              data.certifications.map((value,index) => (
+                (left)?
+                <SectionLeft 
+                heading={value.name}
+                subHeading={value.authority} 
+                bubbleText={formatDate(value.date.start)}
+                lineVisble={((data.certifications.length-1) !== index)}/>
+                :
+                <SectionRight 
+                heading={value.name}
+                subHeading={value.authority} 
+                bubbleText={formatDate(value.date.start)}
+                lineVisble={((data.certifications.length-1) !== index)}/>
+              ))
+            }
 
           </div>
         

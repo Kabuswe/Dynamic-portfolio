@@ -9,9 +9,14 @@
   },
   "dependencies": {
     "bootstrap": "^4.5.3",
+    "date-fns": "^2.16.1",
+    "mongodb": "^3.6.3",
     "next": "10.0.0",
+    "next-connect": "^0.9.1",
     "next-react-svg": "^1.1.2",
+    "next-redux-wrapper": "^6.0.2",
     "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "react-dom": "17.0.1",
+    "react-redux": "^7.2.2"
   }
 }

@@ -3,9 +3,18 @@ import Navbar from '../components/navbar'
 import Footer from '../components/footer'
 import SectionHeader from '../components/section-header'
 import {SectionLeft,SectionRight} from '../components/section-content'
+import {useSelector} from 'react-redux'
 
 export default function Education() {
   const title = "Education"
+  const {data} = useSelector(state => state)
+  let left = true
+
+  const formatDates = (dateObj) =>{
+    left = !left
+    return dateObj.start.year + " - " + dateObj.end.year
+  }
+
   return (
     <>
      <Head>
@@ -20,36 +29,21 @@ export default function Education() {
           subHeader="My Educational Background"/>
           <div className="section-cont">
 
-            <SectionLeft 
-            heading="Université Abdelmalek Essaâdi | Faculté des sciences" 
-            subHeading="Master's degree in Computer Software Engineering" 
-            bubbleText="2019 - 2021"
-            lineVisble={true}/>
+              { data.education.map((value,index) => (
+                (left)?
+                <SectionLeft 
+                heading={value.school.name}
+                subHeading={value.degree_name + " in " + value.field_of_study}
+                bubbleText={formatDates(value.date)}
+                lineVisble={((data.education.length-1) !== index)}/>
+                :
+                <SectionRight 
+                heading={value.school.name}
+                subHeading={value.degree_name + " in " + value.field_of_study}
+                bubbleText={formatDates(value.date)}
+                lineVisble={((data.education.length-1) !== index)}/>
 
-            <SectionRight 
-            heading="Université Chouaïb Doukkali El Jadida | Faculté des Sciences" 
-            subHeading="Bachelor's degree in Data Modeling/Warehousing and Database Administration" 
-            bubbleText="2018 - 2019"
-            lineVisble={true}/>
-            
-            <SectionLeft 
-            heading="Université Sidi Mohammed Ben Abdellah-Fès | Ecole Supérieure de Technologie" 
-            subHeading="University Of Technology Diploma in Computer Engineering Technology/Technician" 
-            bubbleText="2016 - 2018"
-            lineVisble={true}/>
-
-            <SectionRight 
-            heading="Mohammed V University in Rabat | Faculté des sciences de l'éducation" 
-            subHeading="French Language Certificate in French Studies" 
-            bubbleText="2015 - 2016"
-            lineVisble={true}/>
-
-            <SectionLeft 
-            heading="Canisius Secondary School" 
-            subHeading="High School Diploma" 
-            bubbleText="2010 - 2014"
-            lineVisble={false}/>
-
+              ))}
           </div>
         
           </div>

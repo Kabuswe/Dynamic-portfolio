@@ -3,9 +3,32 @@ import Navbar from '../components/navbar'
 import Footer from '../components/footer'
 import SectionHeader from '../components/section-header'
 import {SectionLeft,SectionRight} from '../components/section-content'
+import {useSelector} from 'react-redux'
+import { format } from 'date-fns'
 
 export default function Experience() {
   const title = "Experience"
+  const {data} = useSelector(state => state)
+  let left = true
+
+  const formatDates = (start,end) =>{
+    let startDate = new Date()
+    startDate.setFullYear(start.year, start.month)
+    startDate = format(startDate,'LLL yyyy')
+
+    let endDate = (end !== null)? new Date(): "Current"
+    if(typeof endDate === "object"){
+      endDate.setFullYear(end.year, end.month)
+      endDate = format(endDate,'LLL yyyy')
+    }else{
+      endDate = "Current"
+    } 
+
+    left = !left
+
+    return startDate + " - " + endDate
+  }
+
   return (
     <>
       <Head>
@@ -19,24 +42,23 @@ export default function Experience() {
           header="EXPERIENCE"
           subHeader="My Work Experience"/>
           <div className="section-cont">
+           {data.position_groups.map((value,index) =>(
 
-            <SectionLeft 
-            heading="Source d'Art" 
-            subHeading="Student Intern" 
-            bubbleText="apr 2018 - jun 2018"
-            description="Development of a publicity android mobile application.
-            Development and maintenance of a quiz platform used at the Radiologie and Medical Imagery Conference.
-            Designing E-posters used at the aforementioned conference."
-            lineVisble={true}/>
-
-            <SectionRight 
-            heading="Academic Administration of Sidi Mohamed Ben Abdellah University" 
-            subHeading="Student Intern" 
-            bubbleText="jul 2017 - jul 2017"
-            description="Software Architecture Analysis of an Academic Certificate Generation platform.
-            Evaluation of the aforementioned platform by means of detecting code smells."
-            lineVisble={false}/>
-
+             (left)?
+             <SectionLeft 
+             heading={value.profile_positions[0].company + ", " + value.profile_positions[0].location}
+             subHeading={value.profile_positions[0].title}
+             bubbleText={formatDates(value.profile_positions[0].date.start,value.profile_positions[0].date.end)}
+             description=""
+             lineVisble={((data.position_groups.length-1) !== index)}/>
+             :
+             <SectionRight
+             heading={value.profile_positions[0].company + ", " + value.profile_positions[0].location}
+             subHeading={value.profile_positions[0].title}
+             bubbleText={formatDates(value.profile_positions[0].date.start,value.profile_positions[0].date.end)}
+             description=""
+             lineVisble={((data.position_groups.length-1) !== index)}/>
+           ))}
           </div>
         
           </div>

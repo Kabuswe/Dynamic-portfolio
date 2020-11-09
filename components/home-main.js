@@ -20,9 +20,7 @@ function SectionContainer(props){
             <div className="container section-container-lg">
                 <h3 className="section-container-title ml-2">Who Am I</h3>
                 <p className="ml-2 mr-2 mt-3 section-container-text">
-                I am a graduate student at Abdelmalek Essaâdi University pursuing my masters in Software Quality Assurance. 
-                I have a strong background in Database modeling, building data-centric software solutions and good knowledge of 
-                industry tools and guidelines that drive software development. 
+                {props.summary}
                 </p>
             </div>
 
@@ -60,13 +58,16 @@ export default function HomeMain(props){
                 <div className="row">
                     <div className="col-sm-3">
                         <Image 
-                        src="/images/profile.jpg"
+                        src={props.profileURL}
                         alt="Picture of the author"
-                        width={229}
-                        height={283} />
+                        className="profile-img"
+                        width={280}
+                        height={320}
+                        />
                     </div>
                     <div className="col-sm mt-3">
-                        <SectionContainer/>
+                        <SectionContainer
+                        summary={props.summary}/>
                     </div>
 
                 </div>

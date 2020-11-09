@@ -299,6 +299,7 @@ h1.heading{
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 7vh;
 }
 
 .skill-box-text{
@@ -306,5 +307,11 @@ h1.heading{
   font-size: medium;
   font-weight: bold;
   text-align: center;
+}
+
+.profile-img{
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(-1px 11px 20px rgba(0, 0, 0, 0.25));
 }
 
