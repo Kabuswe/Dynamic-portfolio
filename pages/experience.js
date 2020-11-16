@@ -45,6 +45,7 @@ function Experience({data}) {
 
              (left)?
              <SectionLeft 
+             key={index}
              heading={value.profile_positions[0].company + ", " + value.profile_positions[0].location}
              subHeading={value.profile_positions[0].title}
              bubbleText={formatDates(value.profile_positions[0].date.start,value.profile_positions[0].date.end)}
@@ -52,6 +53,7 @@ function Experience({data}) {
              lineVisble={((data.position_groups.length-1) !== index)}/>
              :
              <SectionRight
+             key={index}
              heading={value.profile_positions[0].company + ", " + value.profile_positions[0].location}
              subHeading={value.profile_positions[0].title}
              bubbleText={formatDates(value.profile_positions[0].date.start,value.profile_positions[0].date.end)}

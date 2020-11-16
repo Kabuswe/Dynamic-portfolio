@@ -30,12 +30,12 @@ function SectionContainer(props){
             <h5 className="heading-text-sm mt-3"><span className="hypen-lg">—</span>Contact me</h5>
             <div className="row">
                 <div className="col-sm-4 mt-4 contact-itm">
-                    <ContactItem value="+212 630 847 830">
+                    <ContactItem value={props.phone}>
                         <TelSVG className="contact-item-img"/>
                     </ContactItem>
                 </div>
                 <div className="col-sm-4 mt-4 contact-itm">
-                    <ContactItem url={props.emailURL} value="Send me an Email">
+                    <ContactItem url={"mailto:"+props.email} value="Send me an Email">
                         <MailSVG className="contact-item-img"/>
                     </ContactItem>
                 </div>
@@ -70,10 +70,11 @@ export default function HomeMain(props){
                     </div>
                     <div className="col-sm mt-3">
                         <SectionContainer
-                        emailURL=""
-                        linkedInURL=""
-                        githubURL=""
-                        summary={props.summary}/>
+                        email={props.email}
+                        linkedInURL={props.linkedIn}
+                        githubURL={props.github}
+                        summary={props.summary}
+                        phone={props.phone}/>
                     </div>
 
                 </div>

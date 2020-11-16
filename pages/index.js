@@ -20,7 +20,11 @@ function Home({data}) {
         name={data.first_name + " " + data.last_name}/>
         <HomeMain
         profileURL={data.profile_picture}
-        summary={data.summary}/>
+        summary={data.summary}
+        email={data.email}
+        phone={data.phone}
+        github={data.github}
+        linkedIn={data.linkedIn}/>
         <Footer/>
       </div>
     </>

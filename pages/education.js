@@ -31,12 +31,14 @@ function Education({data}) {
               { data.education.map((value,index) => (
                 (left)?
                 <SectionLeft 
+                key={index}
                 heading={value.school.name}
                 subHeading={value.degree_name + " in " + value.field_of_study}
                 bubbleText={formatDates(value.date)}
                 lineVisble={((data.education.length-1) !== index)}/>
                 :
                 <SectionRight 
+                key={index}
                 heading={value.school.name}
                 subHeading={value.degree_name + " in " + value.field_of_study}
                 bubbleText={formatDates(value.date)}

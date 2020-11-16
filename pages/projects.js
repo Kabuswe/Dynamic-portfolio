@@ -46,12 +46,14 @@ function Projects({data}) {
               data.projects.map((value,index) => (
                 (left)?
                 <SectionLeft 
+                key={index}
                 heading={value.title} 
                 bubbleText={formatDates(value.date.start,value.date.end)}
                 description={value.description}
                 lineVisble={((data.projects.length-1)!==index)}/>
                 :
                 <SectionRight 
+                key={index}
                 heading={value.title} 
                 bubbleText={formatDates(value.date.start,value.date.end)}
                 description={value.description}

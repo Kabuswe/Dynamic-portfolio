@@ -22,8 +22,8 @@ function Skills({data}) {
 
               <div className="row ml-0">
                 {
-                  data.skills.map((value) => (
-                    <div className="col-sm-3 mb-5 mr-5 skill-box">
+                  data.skills.map((value,index) => (
+                    <div key={index} className="col-sm-3 mb-5 mr-5 skill-box">
                       <span className="skill-box-text">
                         {value}
                       </span>

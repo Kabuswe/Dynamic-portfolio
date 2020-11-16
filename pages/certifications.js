@@ -38,12 +38,14 @@ function Certifications({data}) {
               data.certifications.map((value,index) => (
                 (left)?
                 <SectionLeft 
+                key={index}
                 heading={value.name}
                 subHeading={value.authority} 
                 bubbleText={formatDate(value.date.start)}
                 lineVisble={((data.certifications.length-1) !== index)}/>
                 :
                 <SectionRight 
+                key={index}
                 heading={value.name}
                 subHeading={value.authority} 
                 bubbleText={formatDate(value.date.start)}

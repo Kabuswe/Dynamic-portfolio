@@ -110,8 +110,24 @@ handler
                 res.end("Error updatig user profile : "+err)
             });
             break
-        case 'test':
-            res.end("Done")
+        case 'headline':
+            doc = await req.db
+            .collection('users')
+            .findOneAndUpdate(
+            {profile_id: profile_id},
+            {$set: {
+                headline: obj.link
+            }},
+            {new: true,useFindAndModify: false})
+            .then((user) => {
+                res.statusCode = 200;
+                res.setHeader('Content-Type', 'application/json');
+                res.json(user);
+              })
+            .catch((err) => {
+                res.statusCode = 502;
+                res.end("Error updatig user profile : "+err)
+            });
             break
     }
 });
