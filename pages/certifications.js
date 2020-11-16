@@ -3,12 +3,11 @@ import Navbar from '../components/navbar'
 import Footer from '../components/footer'
 import SectionHeader from '../components/section-header'
 import {SectionLeft,SectionRight} from '../components/section-content'
-import {useSelector} from 'react-redux'
 import { format } from 'date-fns'
 
-export default function Certifications() {
+function Certifications({data}) {
   const title = "Certifications"
-  const {data} = useSelector(state => state)
+
   let left = true
   
   const formatDate = (start) =>{
@@ -64,3 +63,16 @@ export default function Certifications() {
 
   )
 }
+
+export async function getStaticProps(){
+  const res = await fetch("http://localhost:3000/api/certifications")
+  const data = await res.json()
+
+  return{
+    props:{
+      data
+    }
+  }
+}
+
+export default Certifications

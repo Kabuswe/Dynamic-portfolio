@@ -3,12 +3,11 @@ import Navbar from '../components/navbar'
 import Footer from '../components/footer'
 import SectionHeader from '../components/section-header'
 import {SectionLeft,SectionRight} from '../components/section-content'
-import {useSelector} from 'react-redux'
 import { format } from 'date-fns'
 
-export default function Experience() {
+function Experience({data}) {
   const title = "Experience"
-  const {data} = useSelector(state => state)
+    
   let left = true
 
   const formatDates = (start,end) =>{
@@ -68,6 +67,18 @@ export default function Experience() {
         <Footer/>
       </div>
     </>
-
   )
 }
+
+export async function getStaticProps(){
+  const res = await fetch("http://localhost:3000/api/experience")
+  const data = await res.json()
+
+  return{
+    props:{
+      data
+    }
+  }
+}
+
+export default Experience

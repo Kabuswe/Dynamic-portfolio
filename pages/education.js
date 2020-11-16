@@ -3,11 +3,10 @@ import Navbar from '../components/navbar'
 import Footer from '../components/footer'
 import SectionHeader from '../components/section-header'
 import {SectionLeft,SectionRight} from '../components/section-content'
-import {useSelector} from 'react-redux'
 
-export default function Education() {
+function Education({data}) {
   const title = "Education"
-  const {data} = useSelector(state => state)
+
   let left = true
 
   const formatDates = (dateObj) =>{
@@ -56,3 +55,16 @@ export default function Education() {
 
   )
 }
+
+export async function getStaticProps(){
+  const res = await fetch("http://localhost:3000/api/education")
+  const data = await res.json()
+
+  return{
+    props:{
+      data
+    }
+  }
+}
+
+export default Education

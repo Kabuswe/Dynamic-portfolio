@@ -4,12 +4,10 @@ import Footer from '../components/footer'
 import HomeHeader from '../components/home-header'
 import HomeMain from '../components/home-main'
 import React from 'react'
-import {useSelector} from 'react-redux'
-import {wrapper} from '../middleware/store'
 
-function Home() {
+function Home({data}) {
   const title = "Home"
-  const {data} = useSelector(state => state)
+
   return (
     <>
       <Head>
@@ -29,15 +27,16 @@ function Home() {
   )
 }
 
-export const getStaticProps =  wrapper.getStaticProps(
+export async function getStaticProps(){
 
-  async({store, preview}) => {
-    const res = await fetch("http://localhost:3000/api/data")
-    const json = await res.json()
+  const res = await fetch("http://localhost:3000/api/home")
+  const data = await res.json()
 
-    store.dispatch({type: 'DATA', payload:json})
+  return{
+    props:{
+      data
+    }
   }
-  
-)
+}
 
 export default Home

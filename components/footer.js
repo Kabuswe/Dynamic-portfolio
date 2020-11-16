@@ -20,9 +20,9 @@ export default function Footer(){
                        <div className="row justify-content-left">
                             <div className="col-10">
                                 <p className="footer-text">
-                                    Built with the <strong>Next.js Framework</strong> <br/>
-                                    Hosted by <strong>Vercel</strong><br/>
-                                    Version control managed by <strong>Github</strong>
+                                    Built with the <a href="https://nextjs.org/"><strong>Next.js Framework</strong></a> <br/>
+                                    Hosted by <a href="http://vercel.com/"><strong>Vercel</strong></a><br/>
+                                    Version control managed by <a href="http://github.com/"><strong>Github</strong></a>
                                 </p>
                             </div>
                        </div>
@@ -40,8 +40,8 @@ export default function Footer(){
                         <div className="row justify-content-left">
                             <div className="col-10">
                                 <p className="footer-text">
-                                    Site content powered by <strong>LinkedIn</strong> <br/>
-                                    Data managed by <strong>MongoDB</strong> <br/>
+                                    Site content powered by <a href="https://linkedin.com/"><strong>LinkedIn</strong></a> <br/>
+                                    Data managed by <a href="https://www.mongodb.com/"><strong>MongoDB</strong></a> <br/>
                                     <span className="copyright-text">© 2020 Dynamic portfolio.</span>
                                 </p>
                             

@@ -7,4 +7,5 @@ const mongo_cred = {
 export const config = {
     mongoUrl:'mongodb+srv://'+mongo_cred.username+':'+mongo_cred.password+
     '@cluster0.gvpq1.gcp.mongodb.net/'+mongo_cred.db_name+'?retryWrites=true&w=majority',
+    profile_id: 'kabuswe-mulenga-8b976416b'
 }
