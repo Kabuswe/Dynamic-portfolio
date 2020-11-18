@@ -16,7 +16,7 @@ function Home({data}) {
       <Navbar title={title}/>
       <div className="page-content">
         <HomeHeader 
-        intro="Graduate Student at Abdelmalek Essaâdi University, Software Quality Assurance Major"
+        intro={data.headline}
         name={data.first_name + " " + data.last_name}/>
         <HomeMain
         profileURL={data.profile_picture}

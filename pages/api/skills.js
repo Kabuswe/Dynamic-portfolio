@@ -10,7 +10,8 @@ handler
     let doc = await req.db
     .collection('users')
     .findOne({profile_id: config.profile_id},
-        {'skills':1})
+        {'skills':1
+    })
     
     res.json(doc)
 });

@@ -18,8 +18,9 @@ handler
             'email':1,
             'github':1,
             'linkedIn':1,
-            'phone':1
-        })
+            'phone':1,
+            'headline':1
+    })
     
     res.json(doc)
 });
