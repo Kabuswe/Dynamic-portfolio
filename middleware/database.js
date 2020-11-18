@@ -1,3 +1,4 @@
+import nextConnect from 'next-connect'
 import { MongoClient } from 'mongodb'
 import {config} from './config';
 
@@ -56,3 +57,16 @@ export async function getData(path_name){
   return data
 
 }
+
+async function database(req, res, next) {
+  if (!client.isConnected()) await client.connect()
+  req.dbClient = client
+  req.db = client.db('DynamicPortfolio')
+  return next()
+}
+
+const middleware = nextConnect()
+
+middleware.use(database)
+
+export default middleware
