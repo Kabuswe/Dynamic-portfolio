@@ -3,6 +3,7 @@ import Navbar from '../components/navbar'
 import Footer from '../components/footer'
 import SectionHeader from '../components/section-header'
 import {SectionLeft,SectionRight} from '../components/section-content'
+import { getData } from '../middleware/database'
 
 function Education({data}) {
   const title = "Education"
@@ -59,8 +60,7 @@ function Education({data}) {
 }
 
 export async function getStaticProps(){
-  const res = await fetch("http://localhost:3000/api/education")
-  const data = await res.json()
+  const data = await getData('education')
 
   return{
     props:{

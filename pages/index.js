@@ -4,6 +4,7 @@ import Footer from '../components/footer'
 import HomeHeader from '../components/home-header'
 import HomeMain from '../components/home-main'
 import React from 'react'
+import { getData } from '../middleware/database'
 
 function Home({data}) {
   const title = "Home"
@@ -33,8 +34,7 @@ function Home({data}) {
 
 export async function getStaticProps(){
 
-  const res = await fetch("http://localhost:3000/api/home")
-  const data = await res.json()
+  const data = await getData('home')
 
   return{
     props:{

@@ -4,6 +4,7 @@ import Footer from '../components/footer'
 import SectionHeader from '../components/section-header'
 import {SectionLeft,SectionRight} from '../components/section-content'
 import { format } from 'date-fns'
+import {getData} from '../middleware/database'
 
 function Experience({data}) {
   const title = "Experience"
@@ -73,8 +74,7 @@ function Experience({data}) {
 }
 
 export async function getStaticProps(){
-  const res = await fetch("http://localhost:3000/api/experience")
-  const data = await res.json()
+  const data = await getData('experience')
 
   return{
     props:{

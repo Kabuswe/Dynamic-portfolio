@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Navbar from '../components/navbar'
 import Footer from '../components/footer'
 import SectionHeader from '../components/section-header'
+import { getData } from '../middleware/database'
 
 function Skills({data}) {
   const title = "Skills"
@@ -46,8 +47,7 @@ function Skills({data}) {
 }
 
 export async function getStaticProps(){
-  const res = await fetch("http://localhost:3000/api/skills")
-  const data = await res.json()
+  const data = await getData('skills')
 
   return{
     props:{

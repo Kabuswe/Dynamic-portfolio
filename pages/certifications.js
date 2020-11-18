@@ -4,6 +4,7 @@ import Footer from '../components/footer'
 import SectionHeader from '../components/section-header'
 import {SectionLeft,SectionRight} from '../components/section-content'
 import { format } from 'date-fns'
+import { getData } from '../middleware/database'
 
 function Certifications({data}) {
   const title = "Certifications"
@@ -67,8 +68,7 @@ function Certifications({data}) {
 }
 
 export async function getStaticProps(){
-  const res = await fetch("http://localhost:3000/api/certifications")
-  const data = await res.json()
+  const data = await getData('certifications')
 
   return{
     props:{
