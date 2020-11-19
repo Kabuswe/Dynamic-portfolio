@@ -3,7 +3,21 @@ import https from 'https'
 import middleware from '../../../middleware/database'
 import {config} from '../../../middleware/config'
 
+/**
+ * REST API to handle profile updates
+ * 
+ * This REST API endpoint makes calls to the linkedin-public-profiles api, which gets the most recent linkedin
+ * profile information. The obtained profile information is then merged with the existing profile information in the database.
+ * 
+ * Once deployed an automated task is assigned to make requests to this REST API.
+ */
+
 const handler = nextConnect()
+
+/**
+ * Perform POST operation for initial creation of user profile. 
+ * Perform PUT for sequential updates to an existing user profile.
+ */
 
 handler
 .use(middleware)
@@ -14,7 +28,8 @@ handler
     res.end("Operation not allowed!")
 })
 .post(async (req, res) => {
-
+        
+    //Retrieve parameter (profile_id) from request object
     const {
         query: { profile_id },
     } = req
@@ -35,6 +50,7 @@ handler
     .collection('users')
     .findOne({profile_id: profile_id})
 
+    //Check if user already exists in the database 
     if(user === null){
         https
         .request(options, (result) => {
@@ -51,6 +67,7 @@ handler
             result_obj = result_obj.data.data;
             result_obj.profile_id = profile_id
             
+            //Porform database insert for a new user
             let doc = await req.db
             .collection('users')
             .insertOne(result_obj)
@@ -102,7 +119,8 @@ handler
 
         var result_obj = JSON.parse(body.toString());
         result_obj = result_obj.data.data;
-            
+        
+        //Perform profile update for existing user
         let doc = await req.db
         .collection('users')
         .findOneAndUpdate({profile_id: profile_id},{$set: result_obj},{returnNewDocument:true})

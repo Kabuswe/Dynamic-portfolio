@@ -1,11 +1,23 @@
 import nextConnect from 'next-connect'
 import middleware from '../../../middleware/database'
 
+/**
+ * REST API to allow extra fields to be injected into an existing mongoDB document
+ * The only request method allowed is PUT
+ * 
+ * The extra fields to be included are not covered by the linkedin-public-profile api, which is why 
+ * this REST API is needed
+ * 
+ * The REST API receives a request with the (profile_id) as a parameter and a request body containing 
+ * a JSON object of the form ({'link': 'link_value_here', 'link_type': 'link_type_here'})
+ */
+
 const handler = nextConnect()
 
 handler
 .use(middleware)
 .put(async (req, res) => {
+    //Retrieve parameter (profile_id) from request object
     const {
         query: { profile_id },
     } = req
@@ -14,6 +26,7 @@ handler
 
     let doc = null
 
+    //Determine the link type and perform a field update to the document of the user having a profile id of (profile_id)
     switch(obj.link_type){
         case 'github':
             doc = await req.db
