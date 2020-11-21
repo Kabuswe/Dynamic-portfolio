@@ -9,3 +9,19 @@ This readme.md file gives a description of the Dynamic Porfolio project built us
 With the traditional way of creating a portfolio website one would have to manually update content that is served on their portfolio website, what this project offers is an automated way to manage content updates to a deployed portfolio website. There are several possibilities for content integration with the portfolio website, but for this project we'll limit it to one.
 
 The main content of the portfolio website will be sourced from **LinkedIn**. LinkedIn as a platform offers it's users a great way to document and present their achievements. We'll be making use of this structured content by sourcing it and making use of it in the portfolio website.   
+
+## Platforms and services
+
+This section of the readme.md file will list the platforms and services used in the creation of this project as well as their interaction with each other. Below is a list of the platforms and services: 
+
+- **Next.js:** Next.js is an open-source React front-end development web framework. The main of feature of Next.js will be making use of is **Server Side Generation (SSG) with data**, which allows us to retrieve data and render it at build time. What does this mean? For most portfolio websites the data needed to render content on the website is available before the user requests the website. So in this case we'll fetch data only at build time (At each redeployment of the web app). The other such method for data retrieval before rendering available through Next.js is the use of **Server Side Rendering (SSR)**, this method on the other hand makes calls for data on a per user request basis. The data we'll be serving on the website does not change so frequently that we need to provide the user requesting the data, content at the moment of opening the website.
+
+- **MongoDB:** MongoDB is a cross-platform document-oriented database program. Classified as a NoSQL database program. We'll be making use of MongoDB Atlas a global cloud database service. The data to be served as content for the portfolio website will be stored in the MongoDB database and updated autonomously through the use of scheduled REST API requests.
+
+- **Rapid API:** Rapid API is a platform that offers several useful public APIs. For this project we'll be making use of the **linkedin-public-profiles** api. This API allows us to retrieve a JSON object containing a user's LinkedIn profile information, provided that we include the **profile id** in the request to this API. 
+
+    **Note:** This API is currently in **beta**. Certain LinkedIn fields are yet to be added to the API. The fields used in this project were the ones available at the time of editing this readme.md file.
+
+- **Vercel:** Vercel is a cloud platform for static sites and Serverless Functions. We'll be making use of vercel for the ease of deployment of Next.js applications. The use of vercel will also allow us to view analytics for the deployed portfolio website and as well as manage redeployment when changes are made to the **production branch** on github. Deployment of the portfolio website is made possible by importing the project's github repository to vercel and setting the **master branch** of the repository as a **production branch** to handle automatic redeployment when changes are detected.
+
+- **EasyCron:** EasyCron is an online cron service that allows us to create **cron jobs** (time-based job scheduler). Vercel provides an EasyCron integration, which we'll making use of this project. Our Cron jobs will make API requests to trigger data updates to the database and also to trigger redeployment of the portfolio website (This is done to reflect changes to data on the deployed portfolio website). 
