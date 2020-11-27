@@ -25,3 +25,21 @@ This section of the readme.md file will list the platforms and services used in 
 - **Vercel:** Vercel is a cloud platform for static sites and Serverless Functions. We'll be making use of vercel for the ease of deployment of Next.js applications. The use of vercel will also allow us to view analytics for the deployed portfolio website and as well as manage redeployment when changes are made to the **production branch** on github. Deployment of the portfolio website is made possible by importing the project's github repository to vercel and setting the **master branch** of the repository as a **production branch** to handle automatic redeployment when changes are detected.
 
 - **EasyCron:** EasyCron is an online cron service that allows us to create **cron jobs** (time-based job scheduler). Vercel provides an EasyCron integration, which we'll making use of this project. Our Cron jobs will make API requests to trigger data updates to the database and also to trigger redeployment of the portfolio website (This is done to reflect changes to data on the deployed portfolio website). 
+
+## Build flow
+
+Below is a list of actions, essential to this project. Within this readme.md file we'll get into the details of each action to really understand the interactions of the platforms and services listed above. Details of the listed actions will follow the order in which the actions appear. 
+
+1. Retrieve RapidAPI's linkedin-public-profiles **api key** 
+
+2. Setup a MongoDB database and retrieve the **database URL string**
+
+3. Setup a **REST API endpoint** for creating a new user as well as updating an existing user's information
+
+4. Extend the bounds of the linkedin-public-profiles api by adding a second REST API endpoint (This endpoint will be used to **add and update fields** to a user's document in the MongoDB database for fields absent in the linkedin-public-profiles api)
+
+5. Configure **Server-Side Generation (SSG)** to allow content updates to the portfolio website at build-time
+
+6. Deploy the portfolio web site to **Vercel**
+
+7. Setup **EasyCron cron jobs** for scheduled API calls to the **linkedin-public-profiles api** and **Vercel's redeployment api**
